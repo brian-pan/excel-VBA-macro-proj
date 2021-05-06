@@ -726,4 +726,4 @@ AND Country = 'Germany'
 GROUP BY 1,2
 ORDER BY TotalQuantity DESC;
 ```
-Solution: The Product ordered the most by customers in Germany is the Boston Crab Meat with Product ID of 40. 
+Solution: The Product ordered the most by customers in Germany is the Boston Crab Meat with a total amount of 160. 
