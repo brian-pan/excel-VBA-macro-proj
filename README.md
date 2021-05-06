@@ -1,8 +1,8 @@
-# Solution Set for Shopify Fall 2021 Data Science Intern Challenge 
+### Solution Set for Shopify Intern
 #### Name: Zifan Pan
 #### Date: May 9, 2021
 
-## Question 1
+#### Question 1
 
 
 ```python
@@ -25,19 +25,7 @@ df.head(10)
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -183,19 +171,7 @@ df[df['order_amount'] > 3145]
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -340,19 +316,7 @@ df[df['order_amount'] > 3145].groupby('shop_id').count()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -710,19 +674,7 @@ df[df['order_amount'] > 3145].drop(['order_id','user_id'], axis=1).groupby('shop
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -754,34 +706,3 @@ df[df['order_amount'] > 3145].drop(['order_id','user_id'], axis=1).groupby('shop
 
 
 In short, the average order value across all 4937 transactions was 302.58 dollars, meaning on average Shopify can expected the shoe stores to sell 2 sneakers and have 302.58 dollars of income per transaction. During this 30-day window, all 99 stores sold a total number of 9848 sneakers, where the lowest transaction amount was 90 dollars, and the highest transaction amount was 1760 dollars. The median of all transactions was 284 dollars, but the mean was 302.58 dollars, so that the data is right-skewed, which means the stores should expect most of consumers spent less than 302.58 dollars each time they purchase snearkers. Besides, not all consumers has made a purchase, and some consumers purchased multiple times. Some user(s) made at most 28 times of transactions and some user(s) made at least 7 times of transactions. Lastly, regrading the large transactions, under the premise that the data is true, it would be benefical if store #42 and store #78 can seek the long-term cooperations with them. 
-
-
-## Question 2
-### a.
-```SQL
-SELECT COUNT(*)
-FROM Orders
-WHERE ShipperID = '1';
-```
-Solution: The total number of orders shipped by Speedy Express is 54.
-### b.
-```SQL
-SELECT E.EmployeeID, LastName, COUNT(O.OrderID) AS TotalNum
-FROM Employees AS E, Orders AS O
-WHERE E.EmployeeID = O.EmployeeID
-GROUP BY E.EmployeeID
-ORDER BY TotalNum DESC;
-```
-Solution: The last name of the employee with the most orders is Peacock.
-### c.
-```SQL
-SELECT P.ProductID, P.ProductName, SUM(OD.Quantity) AS TotalQuantity
-FROM Products AS P, Orders AS O, OrderDetails AS OD, Customers AS C
-WHERE P.ProductID = OD.ProductID
-AND O.CustomerID = C.CustomerID
-AND O.OrderID = OD.OrderID
-AND Country = 'Germany'
-GROUP BY 1,2
-ORDER BY TotalQuantity DESC;
-```
-Solution: The Product ordered the most by customers in Germany is the Boston Crab Meat with Product ID of 40. 
